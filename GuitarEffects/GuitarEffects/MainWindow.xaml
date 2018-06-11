@@ -1,0 +1,157 @@
+﻿<Window x:Class="GuitarEffects.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GuitarEffects"
+        xmlns:svl="clr-namespace:WPFSoundVisualizationLib;assembly=WPFSoundVisualizationLib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="59*"/>
+            <ColumnDefinition Width="139*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="200" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBox VerticalAlignment="Center"
+                         Grid.Column="0"
+                         HorizontalAlignment="Stretch"
+                         Margin="5"
+                         IsReadOnly="True"
+                         Name="FileText" />
+            <StackPanel HorizontalAlignment="Right"
+                            Orientation="Horizontal"
+                            Grid.Column="1">
+                <Button Content="Browse"
+                            Height="24"
+                            Width="50"
+                            HorizontalAlignment="Center"
+                            Margin="2,2,10,2"
+                            Name="BrowseButton"
+                            VerticalAlignment="Center"
+                            Click="BrowseButton_Click" />
+                <Button Name="PlayButton"
+                            VerticalAlignment="Center"
+                            Width="50"
+                            Height="24"
+                            Margin="2"
+                            Click="PlayButton_Click"
+                            IsEnabled="False"
+                            Content="Play" />
+                <Button Name="PauseButton"
+                            VerticalAlignment="Center"
+                            Width="50"
+                            Height="24"
+                            Margin="2"
+                            Click="PauseButton_Click"
+                            IsEnabled="False"
+                            Content="Pause" />
+                <Button Name="StopButton"
+                            VerticalAlignment="Center"
+                            Width="50"
+                            Height="24"
+                            Margin="2"
+                            Click="StopButton_Click"
+                            IsEnabled="False"
+                            Content="Stop" />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1"
+                Grid.ColumnSpan="2" >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="395*" />
+                <ColumnDefinition Width="397*"/>
+            </Grid.ColumnDefinitions>
+
+            <svl:WaveformTimeline x:Name="waveformTimeline"
+                                  Grid.Column="0"
+                                  Margin="10, 10, 10, 10"
+                                  BorderThickness="1" Grid.ColumnSpan="2" />
+        </Grid>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <CheckBox Name="CompressorSwitch"  Content="Compressor" HorizontalAlignment="Left" Margin="10, 10,0,0"  Height="15" VerticalAlignment="Top"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Height="15" Margin="10,10,0,0">Threshold -</TextBlock>
+                    <TextBlock Grid.Column="1" Height="15" Margin="10,10,0,0" Name="threshText">0 dB</TextBlock>
+                </Grid>
+                <Slider HorizontalAlignment="Left" Margin="10,2,0,0"  VerticalAlignment="Bottom" Height="20" Width="200"
+                        Maximum="50" Name="compressorThresh" ValueChanged="CompressorThreshSlider_ValueChanged"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Height="15" Margin="10,5,0,0">Gain -</TextBlock>
+                    <TextBlock Grid.Column="1" Height="15" Margin="10,5,0,0" Name="gainText">0</TextBlock>
+                </Grid>
+                <Slider HorizontalAlignment="Left" Margin="10,2,0,0"  VerticalAlignment="Bottom" Height="20" Width="200"
+                        Maximum="100" Name="compressorGain" ValueChanged="CompressorGainSlider_ValueChanged"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Height="15" Margin="10,5,0,0">Gate -</TextBlock>
+                    <TextBlock Grid.Column="1" Height="15" Margin="10,5,0,0" Name="gateText"></TextBlock>
+                </Grid>
+                <Slider HorizontalAlignment="Left" Margin="10,2,0,0"  VerticalAlignment="Bottom" Height="20" Width="200"
+                        Maximum="60" Name="compressorGate" ValueChanged="CompressorGateSlider_ValueChanged"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <CheckBox Name="ReverbSwitch" Content="Reverb" HorizontalAlignment="Left" Margin="10, 10,0,0"  Height="15" VerticalAlignment="Top"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Height="15" Margin="10,10,0,0">Delay -</TextBlock>
+                    <TextBlock Grid.Column="1" Height="15" Margin="10,10,0,0" Name="delayText">0 ms</TextBlock>
+                </Grid>
+                <Slider HorizontalAlignment="Left" Margin="10,2,0,0"  VerticalAlignment="Bottom" Height="20" Width="200"
+                        Maximum="400" Name="reverbDelay" ValueChanged="ReverbDelaySlider_ValueChanged"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Height="15" Margin="10,5,0,0">Decay -</TextBlock>
+                    <TextBlock Grid.Column="1" Height="15" Margin="10,5,0,0" Name="decayText">0</TextBlock>
+                </Grid>
+                <Slider HorizontalAlignment="Left" Margin="10,2,0,0"  VerticalAlignment="Bottom" Height="20" Width="200"
+                        Maximum="100" Name="reverbDecay" ValueChanged="ReverbDecaySlider_ValueChanged"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <Button HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0, 15, 0, 0" Height="40" Width="100" Click="ApplyEffectsButton_Click">Apply effects</Button>
+                <TextBlock Name="ErrorText"></TextBlock>
+            </StackPanel>
+
+        </Grid>
+
+
+    </Grid>
+</Window>
