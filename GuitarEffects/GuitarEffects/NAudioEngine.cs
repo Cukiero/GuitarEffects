@@ -491,7 +491,8 @@ namespace GuitarEffects
             outputStream = new WaveChannel32(effectStream);
             waveFormStream = new WaveChannel32(effectStream);
 
-            
+            outputStream.Sample += outputStream_Sample;
+
             waveOutDevice.Init(outputStream);
 
             ChannelLength = outputStream.TotalTime.TotalSeconds;
