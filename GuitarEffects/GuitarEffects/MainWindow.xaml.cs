@@ -22,6 +22,9 @@ namespace GuitarEffects
         private double compressGain = 0.5;
         private int compressGate = -40;
 
+        private int delayBpmValue = 120;
+        private float delayVolumeValue = 1; 
+
         public MainWindow()
         {
             InitializeComponent();
@@ -55,6 +58,12 @@ namespace GuitarEffects
             gateText.Text = compressGate.ToString() + " dB";
             compressorGate.Value = 60 + (int)compressGate;
 
+            bpmText.Text = this.delayBpmValue.ToString() + " bpm";
+            delayBpm.Value = (double)this.delayBpmValue;
+
+            volumeText.Text = this.delayVolumeValue.ToString();
+            delayVolume.Value = this.delayVolumeValue * 100;
+
         }
         private void ApplyEffectsButton_Click(object sender, RoutedEventArgs e)
         {
@@ -65,6 +74,10 @@ namespace GuitarEffects
             if (CompressorSwitch.IsChecked == true)
             {
                 soundEngine.AddCompressors(this.compressThresh, this.compressGain, this.compressGate);
+            }
+            if (DelaySwitch.IsChecked == true)
+            {
+                soundEngine.AddDelays(this.delayBpmValue, this.delayVolumeValue);
             }
             if (ReverbSwitch.IsChecked == true)
             {
@@ -112,6 +125,18 @@ namespace GuitarEffects
             this.compressGate = (60 - (int)compressorGate.Value) * -1;
             gateText.Text = this.compressGate.ToString() + " dB";
 
+        }
+
+        private void DelayBpmSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            this.delayBpmValue = (int)delayBpm.Value;
+            bpmText.Text = this.delayBpmValue.ToString() + " bpm";
+        }
+
+        private void DelayVolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            this.delayVolumeValue = (float)Math.Round((delayVolume.Value / 100), 2);
+            volumeText.Text = this.delayVolumeValue.ToString();
         }
 
         #region NAudio Engine Events

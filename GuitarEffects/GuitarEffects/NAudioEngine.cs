@@ -460,6 +460,14 @@ namespace GuitarEffects
             }
         }
 
+        public void AddDelays(int bpm, float volume)
+        {
+            if (inputStream != null)
+            {
+                for (int i = 0; i < inputStream.WaveFormat.Channels; i++) this.Effects.Add(new Effects.Delay(bpm, volume));
+            }
+        }
+
         public void ChangeEffects()
         {
             if (waveOutDevice != null)

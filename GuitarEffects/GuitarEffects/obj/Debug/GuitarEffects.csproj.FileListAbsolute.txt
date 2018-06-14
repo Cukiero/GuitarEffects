@@ -233,3 +233,7 @@ C:\Users\Cukier\Documents\GitProjects\GuitarEffects\GuitarEffects\GuitarEffects\
 C:\Users\Cukier\Documents\GitProjects\GuitarEffects\GuitarEffects\GuitarEffects\obj\Debug\GuitarEffects.csproj.CopyComplete
 C:\Users\Cukier\Documents\GitProjects\GuitarEffects\GuitarEffects\GuitarEffects\obj\Debug\GuitarEffects.exe
 C:\Users\Cukier\Documents\GitProjects\GuitarEffects\GuitarEffects\GuitarEffects\obj\Debug\GuitarEffects.pdb
+C:\Users\Cukier\Documents\GitProjects\GuitarEffects\GuitarEffects\GuitarEffects\bin\Debug\GuitarEffects.exe.manifest
+C:\Users\Cukier\Documents\GitProjects\GuitarEffects\GuitarEffects\GuitarEffects\bin\Debug\GuitarEffects.application
+C:\Users\Cukier\Documents\GitProjects\GuitarEffects\GuitarEffects\GuitarEffects\obj\Debug\GuitarEffects.exe.manifest
+C:\Users\Cukier\Documents\GitProjects\GuitarEffects\GuitarEffects\GuitarEffects\obj\Debug\GuitarEffects.application

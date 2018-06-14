@@ -86,6 +86,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
                 <CheckBox Name="CompressorSwitch"  Content="Compressor" HorizontalAlignment="Left" Margin="10, 10,0,0"  Height="15" VerticalAlignment="Top"/>
@@ -97,7 +98,7 @@
                     <TextBlock Grid.Column="0" Height="15" Margin="10,10,0,0">Threshold -</TextBlock>
                     <TextBlock Grid.Column="1" Height="15" Margin="10,10,0,0" Name="threshText">0 dB</TextBlock>
                 </Grid>
-                <Slider HorizontalAlignment="Left" Margin="10,2,0,0"  VerticalAlignment="Bottom" Height="20" Width="200"
+                <Slider HorizontalAlignment="Stretch" Margin="10,2,10,0"  VerticalAlignment="Bottom" Height="20" 
                         Maximum="50" Name="compressorThresh" ValueChanged="CompressorThreshSlider_ValueChanged"/>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -107,7 +108,7 @@
                     <TextBlock Grid.Column="0" Height="15" Margin="10,5,0,0">Gain -</TextBlock>
                     <TextBlock Grid.Column="1" Height="15" Margin="10,5,0,0" Name="gainText">0</TextBlock>
                 </Grid>
-                <Slider HorizontalAlignment="Left" Margin="10,2,0,0"  VerticalAlignment="Bottom" Height="20" Width="200"
+                <Slider HorizontalAlignment="Stretch" Margin="10,2,10,0"  VerticalAlignment="Bottom" Height="20" 
                         Maximum="100" Name="compressorGain" ValueChanged="CompressorGainSlider_ValueChanged"/>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -117,7 +118,7 @@
                     <TextBlock Grid.Column="0" Height="15" Margin="10,5,0,0">Gate -</TextBlock>
                     <TextBlock Grid.Column="1" Height="15" Margin="10,5,0,0" Name="gateText"></TextBlock>
                 </Grid>
-                <Slider HorizontalAlignment="Left" Margin="10,2,0,0"  VerticalAlignment="Bottom" Height="20" Width="200"
+                <Slider HorizontalAlignment="Stretch" Margin="10,2,10,0"  VerticalAlignment="Bottom" Height="20" 
                         Maximum="60" Name="compressorGate" ValueChanged="CompressorGateSlider_ValueChanged"/>
             </StackPanel>
 
@@ -131,7 +132,7 @@
                     <TextBlock Grid.Column="0" Height="15" Margin="10,10,0,0">Delay -</TextBlock>
                     <TextBlock Grid.Column="1" Height="15" Margin="10,10,0,0" Name="delayText">0 ms</TextBlock>
                 </Grid>
-                <Slider HorizontalAlignment="Left" Margin="10,2,0,0"  VerticalAlignment="Bottom" Height="20" Width="200"
+                <Slider HorizontalAlignment="Stretch" Margin="10,2,10,0"  VerticalAlignment="Bottom" Height="20" 
                         Maximum="400" Name="reverbDelay" ValueChanged="ReverbDelaySlider_ValueChanged"/>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -141,12 +142,36 @@
                     <TextBlock Grid.Column="0" Height="15" Margin="10,5,0,0">Decay -</TextBlock>
                     <TextBlock Grid.Column="1" Height="15" Margin="10,5,0,0" Name="decayText">0</TextBlock>
                 </Grid>
-                <Slider HorizontalAlignment="Left" Margin="10,2,0,0"  VerticalAlignment="Bottom" Height="20" Width="200"
+                <Slider HorizontalAlignment="Stretch" Margin="10,2,10,0"  VerticalAlignment="Bottom" Height="20" 
                         Maximum="100" Name="reverbDecay" ValueChanged="ReverbDecaySlider_ValueChanged"/>
             </StackPanel>
 
             <StackPanel Grid.Column="2">
-                <Button HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0, 15, 0, 0" Height="40" Width="100" Click="ApplyEffectsButton_Click">Apply effects</Button>
+                <CheckBox Name="DelaySwitch" Content="8th note delay" HorizontalAlignment="Left" Margin="10, 10,0,0"  Height="15" VerticalAlignment="Top"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Height="15" Margin="10,10,0,0">BPM -</TextBlock>
+                    <TextBlock Grid.Column="1" Height="15" Margin="10,10,0,0" Name="bpmText">0</TextBlock>
+                </Grid>
+                <Slider HorizontalAlignment="Stretch" Margin="10,2,10,0"  VerticalAlignment="Bottom" Height="20"
+                        Minimum="60"  Maximum="220" Name="delayBpm" ValueChanged="DelayBpmSlider_ValueChanged"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Height="15" Margin="10,5,0,0">Volume -</TextBlock>
+                    <TextBlock Grid.Column="1" Height="15" Margin="10,5,0,0" Name="volumeText">0</TextBlock>
+                </Grid>
+                <Slider HorizontalAlignment="Stretch" Margin="10,2,10,0"  VerticalAlignment="Bottom" Height="20"
+                        Maximum="100" Name="delayVolume" ValueChanged="DelayVolumeSlider_ValueChanged"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="3">
+                <Button HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0, 15, 0, 0" Height="40" Width="100" Click="ApplyEffectsButton_Click">Apply effects</Button>
                 <TextBlock Name="ErrorText"></TextBlock>
             </StackPanel>
 

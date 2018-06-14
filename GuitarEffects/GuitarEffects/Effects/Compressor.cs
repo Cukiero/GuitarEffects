@@ -17,17 +17,23 @@ namespace GuitarEffects.Effects
         public double Gain { get; private set; }
         public float VolGate { get; private set; }
 
+        public float previous;
+
+
         public Compressor(int threshold = -10, double gain = 0.60, int gatedB = -25, CompressorType type = CompressorType.Upward)
         {
             this.compType = type;
             this.VolThresh = (float)Math.Pow(10.0f, threshold * 0.05f);
             this.VolGate = (float)Math.Pow(10.0f, gatedB * 0.05f);
             this.Gain = gain;
+            this.previous = 1.0f;
+            
         }
 
         public float ApplyEffect(float sample)
         {
-            if(sample < this.VolThresh && sample > this.VolGate)
+
+            if (sample < this.VolThresh && sample > this.VolGate)
             {
                 double smpl = (double)this.VolThresh / (double)sample;
 
